@@ -1,0 +1,119 @@
+<div>
+    <h2>Sign Up</h2>
+</div>
+
+<form class="mt-5 col-md-6 m-auto" [formGroup]="signUpForm" (ngSubmit)="onSubmitForm()">
+    <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <div class="input-group">
+            <span class="input-group-text" id="inputGroupPrepend">@</span>
+            <input placeholder="entrer votre username" formControlName="username" type="text" class="form-control" id="username" aria-describedby="userHelp" />
+
+            <div class="invalid-feedback">Please choose a username.</div>
+        </div>
+        <div>Champs touched : {{ signUpForm.controls["username"].touched }}</div>
+        <div>Champs modifié : {{ signUpForm.controls["username"].dirty }}</div>
+        <div>
+            Champs non-modifié : {{ signUpForm.controls["username"].pristine }}
+        </div>
+        <div>Champs invalide : {{ signUpForm.controls["username"].invalid }}</div>
+        <div id="userHelp" class="form-text alert-danger" *ngIf="
+        signUpForm.controls['username'].touched &&
+        signUpForm.controls['username'].invalid
+      ">
+            L'adresse email est obligatoire
+        </div>
+        <div class="form-text alert-danger" *ngIf="
+        signUpForm.controls['username'].touched &&
+        signUpForm.controls['username'].getError('email')
+      ">
+            Le format de l'email n'est pas correct ... 😢
+        </div>
+    </div>
+
+    <div id="userHelp" class="form-text alert-danger" *ngIf="
+      signUpForm.controls['username'].touched &&
+      signUpForm.controls['username'].invalid
+    ">
+        L'adresse email est obligatoire
+    </div>
+
+    <div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Mot de Passe</label>
+            <input formControlName="password" type="password" class="form-control" id="password" aria-describedby="passwordHelpBlock" />
+            <div class="invalid-feedback">Please provide a valid password</div>
+        </div>
+        <div>Password invalid : {{ signUpForm.controls["password"].invalid }}</div>
+        <div>
+            Password a une erreur de longueur minimum : {{ signUpForm.controls["password"].getError("minlength") | json }}
+        </div>
+        <div>
+            Password a une erreur de longueur maximum : {{ signUpForm.controls["password"].getError("maxlength") | json }}
+        </div>
+        <div *ngIf="
+        signUpForm.controls['password'].touched &&
+        signUpForm.controls['password'].getError('required')
+      " class="form-text alert-danger">
+            Le mot de passe est obligatoire
+        </div>
+        <div *ngIf="
+        signUpForm.controls['password'].dirty &&
+        signUpForm.controls['password'].getError('minlength')
+      " class="form-text alert-danger">
+            Le mot de passe doit avoir une longueur min de 8 caractères
+        </div>
+        <div *ngIf="
+        signUpForm.controls['password'].dirty &&
+        signUpForm.controls['password'].getError('maxlength')
+      " class="form-text alert-danger">
+            Le mot de passe ne doit pas dépasser 12 caractères
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="confirm-password" class="form-label">Confirmer le mot de passe</label
+    >
+    <input
+      formControlName="confirmPassword"
+      type="password"
+      id="confirm-password"
+      class="form-control"
+      aria-describedby="passwordHelpBlock"
+    />
+    <div class="invalid-feedback">les mots de passe ne correspondent pas</div>
+    <div class="mb-3">
+      <div>
+        Mot de passe égaux error : {{ signUpForm.getError("mismatch") | json }}
+      </div>
+      <div
+        class="form-text alert-danger"
+        *ngIf="
+          signUpForm.controls['confirmPassword'].dirty &&
+          signUpForm.getError('mismatch')
+        "
+      >
+        Les mots de passe doivent être similaires 😉
+      </div>
+    </div>
+  </div>
+
+  <div class="d-grid col-12 col-md-2 ms-auto">
+    <button
+      class="btn btn-primary text-nowrap"
+      [disabled]="signUpForm.invalid"
+      type="submit"
+    >
+      S'inscrire
+    </button>
+    <div>Le formulaire est-il invalide ? : {{ signUpForm.invalid }}</div>
+  </div>
+</form>
+<!--------------------------------------------
+  Le code ci-dessous permet simplement de 
+  visualiser les données du formulaire en live
+  c'est comme un console.log() dans le template
+---------------------------------------------->
+<div>
+  {{ signUpForm.value | json }}
+</div>

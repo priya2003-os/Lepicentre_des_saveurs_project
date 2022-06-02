@@ -1,0 +1,35 @@
+<p>my-country works!</p>
+<!--<p *ngFor="let country of listCountries">
+    {{ country.name }}
+</p>-->
+
+<h1>Liste de mes pays</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Picture</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let country of listCountries">
+            <td>{{ country.name }}</td>
+            <!--  Name de mes pays -->
+            <td>{{ country.picture }}</td>
+            <!--  Picture de mes pays -->
+            <td>
+                <button class="btn btn-warning" routerLink="/update-country/{{ country.id }}">
+                    update
+                </button>
+            </td>
+            <td>
+                <button class="btn btn-danger" (click)="onClickDeleteCountry(country)">
+                    Delete
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
