@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Category } from 'src/app/models/category';
 import { Country } from 'src/app/models/country';
+import { Product } from 'src/app/models/product';
 import { GestionPaysService } from 'src/app/services/gestion-pays.service';
 
 @Component({
@@ -39,6 +40,20 @@ export class PageOriginPaysComponent implements OnInit {
       this.listCategories = response;
     });
   }
+  // onClickCategory(product: Product) {
+
+  //   if (countryId) {
+  //     this.gestionPaysService
+  //       .goProducts(product)
+  //       .subscribe((resp) => {
+  //         console.log(resp);
+  //       });
+
+  //     const id = countryId + categoryId;
+  //     console.log(id);
+  //     return id;
+  //   }
+  // }
 }
 
 /*this.gestionPaysService.getAllProducts().subscribe((resp) => {

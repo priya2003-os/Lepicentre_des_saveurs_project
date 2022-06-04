@@ -1,1 +1,18 @@
 <p>page-produit works!</p>
+
+<div class="card" style="width: 18rem;" *ngFor="let product of listProducts">
+
+    <img src="{{product.picture}}" class="card-img-top" alt="{{product.name}}">
+    <div class="card-body">
+        <h5 class="card-title">{{product.name}}</h5>
+        <p class="card-text">{{product.description}}
+        </p>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">Prix: {{product.price}} euros </li>
+    </ul>
+    <!--<div class="card-body">
+        <a href="#" class="card-link">Card link</a>
+        <a href="#" class="card-link">Another link</a>
+    </div>-->
+</div>

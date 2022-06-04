@@ -11,8 +11,10 @@
             <div class="card-body">
                 <h5 class="card-title">{{ category.name }}</h5>
                 <p class="card-text"></p>
-                <a href="#" class="btn btn-primary">Découvrir</a>
+                <a routerLink="produit/{{country.id}}/{{category.id}}" class="btn btn-primary">Découvrir</a>
             </div>
         </div>
     </div>
 </div>
+
+<!--(click)="onClickCategory('country.id', 'category.id')"-->
