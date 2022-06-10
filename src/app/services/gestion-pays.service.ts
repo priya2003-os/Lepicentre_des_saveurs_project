@@ -14,38 +14,22 @@ export class GestionPaysService {
   constructor(private http: HttpClient, private router: Router) {}
 
   getAllProducts(): Observable<Product[]> {
-    const token = localStorage.getItem('token');
-
-    return this.http.get<Product[]>(`${environment.baseUrl}/products`, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
+    return this.http.get<Product[]>(`${environment.baseUrl}/products`);
   }
   getAllCountries(): Observable<Country[]> {
-    const token = localStorage.getItem('token');
-
-    return this.http.get<Country[]>(`${environment.baseUrl}/countries`, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
+    return this.http.get<Country[]>(`${environment.baseUrl}/countries`);
   }
 
   getCountryById(countryId: string): Observable<Country> {
-    const token = localStorage.getItem('token');
     console.log(countryId);
 
     return this.http.get<Country>(
-      `${environment.baseUrl}/countries/${countryId}`,
-      {
-        headers: { Authorization: `Bearer ${token}` },
-      }
+      `${environment.baseUrl}/countries/${countryId}`
     );
   }
 
   getAllCategories(): Observable<Category[]> {
-    const token = localStorage.getItem('token');
-
-    return this.http.get<Category[]>(`${environment.baseUrl}/categories/all`, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
+    return this.http.get<Category[]>(`${environment.baseUrl}/categories/all`);
   }
 
   createNewCountry(newCountry: Country) {
@@ -98,25 +82,46 @@ export class GestionPaysService {
     );
   }
 
-  getProductByIdCountry(
-    country_id: string,
-    category_id: string
-  ): Observable<any> {
+  updateProduct(product: Product) {
     const token = localStorage.getItem('token');
 
-    const body = {
-      countryId: country_id,
-      categoryId: category_id,
-    };
-
     return this.http.post<any>(
-      `${environment.baseUrl}/products/by-product-country-category`,
-      body,
+      `${environment.baseUrl}/products/update`,
+      product,
       {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       }
+    );
+  }
+
+  deleteProduct(product: Product) {
+    const token = localStorage.getItem('token');
+    return this.http.post<any>(
+      `${environment.baseUrl}/products/delete`,
+      product,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
+  }
+
+  getProductByIdCountryAndIdCategory(
+    countryId: string,
+    categoryId: string
+  ): Observable<Product> {
+    const token = localStorage.getItem('token');
+    console.log(countryId);
+    console.log(categoryId);
+
+    // const body = {
+    //   countryId: Product[country_id]
+    //   categoryId: product.category_id,
+    // };
+
+    return this.http.get<any>(
+      `${environment.baseUrl}/products/by-product-country-category/${countryId}/${categoryId}`
     );
   }
 }

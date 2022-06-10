@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <div>
-        <h2>{{ country.name }}</h2>
+        <h2>{{ country && country.name }}</h2>
     </div>
     <div class="row">
 
@@ -11,10 +11,8 @@
             <div class="card-body">
                 <h5 class="card-title">{{ category.name }}</h5>
                 <p class="card-text"></p>
-                <a routerLink="produit/{{country.id}}/{{category.id}}" class="btn btn-primary">Découvrir</a>
+                <a routerLink="products/{{country.id}}/{{category.id}}" class="btn btn-primary">Découvrir</a>
             </div>
         </div>
     </div>
 </div>
-
-<!--(click)="onClickCategory('country.id', 'category.id')"-->

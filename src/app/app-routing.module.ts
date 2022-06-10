@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin/admin.component';
 import { CreateCountryComponent } from './crud/create/create-country/create-country.component';
 import { MyCountryComponent } from './crud/read/my-country/my-country.component';
+import { MyProductComponent } from './crud/read/my-product/my-product.component';
 import { UpdateCountryComponent } from './crud/update/update-country/update-country.component';
 import { AuthGuard } from './guards/auth.guard';
 import { PageAccueilComponent } from './pages/page-accueil/page-accueil.component';
@@ -15,19 +16,23 @@ const routes: Routes = [
   { path: 'admin', canActivate: [AuthGuard], component: AdminComponent },
   // { path: '', component: PageAccueilComponent },
   { path: 'accueil', component: PageAccueilComponent },
-  { path: 'produit', component: PageProduitComponent },
-  { path: 'sign-in', component: PageSignInComponent },
-  { path: 'sign-up', component: PageSignUpComponent },
   {
     path: 'country/:id-country',
     component: PageOriginPaysComponent,
   },
+  {
+    path: 'country/:id-country/products/:countryId/:categoryId',
+    component: PageProduitComponent,
+  },
+  { path: 'sign-in', component: PageSignInComponent },
+  { path: 'sign-up', component: PageSignUpComponent },
   {
     path: 'create-country',
     component: CreateCountryComponent,
   },
   { path: 'my-country', component: MyCountryComponent },
   { path: 'update-country/:id-country', component: UpdateCountryComponent },
+  { path: 'my-product', component: MyProductComponent },
 ];
 
 @NgModule({

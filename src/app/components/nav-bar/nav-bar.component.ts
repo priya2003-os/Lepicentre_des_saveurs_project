@@ -41,7 +41,7 @@ export class NavBarComponent implements OnInit {
       .getAllCountries()
       .subscribe((countries: Country[]) => {
         console.log(countries);
-        this.list = countries;
+        this.list = countries && countries;
       });
   }
   onClickLogout() {

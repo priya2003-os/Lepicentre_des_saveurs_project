@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
   CanActivate,
-  Router,
   RouterStateSnapshot,
   UrlTree,
 } from '@angular/router';
@@ -12,8 +11,8 @@ import { AuthenticationService } from '../services/authentication.service';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthGuard implements CanActivate {
-  constructor(private router: Router) {}
+export class AdminGuard implements CanActivate {
+  constructor(private authenticationService: AuthenticationService) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -23,15 +22,6 @@ export class AuthGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    console.log('Passage par le guard !!!');
-
-    const token = localStorage.getItem('token');
-
-    if (token !== null) {
-      return true;
-    } else {
-      this.router.navigateByUrl('/sign-in');
-      return false;
-    }
+    return this.authenticationService.estConnecte();
   }
 }

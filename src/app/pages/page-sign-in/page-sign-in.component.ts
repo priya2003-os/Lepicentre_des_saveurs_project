@@ -39,15 +39,15 @@ export class PageSignInComponent implements OnInit {
     const username = form.value.username;
     const password = form.value.password;
 
-    const requeteObservable = this.authService.logUser(username, password);
-    console.log(requeteObservable);
+    const requete$ = this.authService.logUser(username, password);
+    console.log(requete$);
 
-    requeteObservable.subscribe({
+    requete$.subscribe({
       // method a appeler en cas de succès
       next: (resp: any) => {
         console.log(resp.token);
 
-        this.router.navigateByUrl('/');
+        this.router.navigateByUrl('/accueil');
         // TODO stockage de mon token
         // Localstorage
         localStorage.setItem('token', resp.token);

@@ -6,8 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./page-accueil.component.css'],
 })
 export class PageAccueilComponent implements OnInit {
-  cheminImage: any = '/assets/picture/fraise.png';
-
   constructor() {}
 
   ngOnInit(): void {}

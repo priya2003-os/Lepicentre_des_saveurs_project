@@ -7,7 +7,6 @@ export class Product {
   country_id?: string;
   brand_id?: string;
   category_id?: string;
-  
 
   constructor(
     paramName: string,

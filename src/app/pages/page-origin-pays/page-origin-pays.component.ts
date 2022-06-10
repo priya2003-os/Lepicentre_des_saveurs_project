@@ -25,19 +25,21 @@ export class PageOriginPaysComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((param) => {
+      console.log(param);
       this.gestionPaysService
         .getCountryById(param['id-country'])
         .subscribe((country: Country) => {
+          console.log({ country });
           this.country = country;
+          this.gestionPaysService.getAllCountries().subscribe((response) => {
+            console.log(response);
+            this.countries = response;
+          });
+          this.gestionPaysService.getAllCategories().subscribe((response) => {
+            console.log(response);
+            this.listCategories = response;
+          });
         });
-    });
-    this.gestionPaysService.getAllCountries().subscribe((response) => {
-      console.log(response);
-      this.countries = response;
-    });
-    this.gestionPaysService.getAllCategories().subscribe((response) => {
-      console.log(response);
-      this.listCategories = response;
     });
   }
   // onClickCategory(product: Product) {

@@ -1,1 +1,40 @@
 <p>my-product works!</p>
+
+<!--<p *ngFor="let product of listCountries">
+    {{ product.name }}
+</p>-->
+
+<h1>Liste de mes produits</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Picture</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <!--<tr *ngFor="">
+            <td>{{ product.name }}</td>
+            <td>{{ product.description }}</td>
+            <td>{{ product.picture }}</td>
+            <td>{{ product.price }}</td>
+            <td>{{ product.countryId }}</td>
+            <td>{{ product.categoryId }}</td>
+            <td>{{ product.brandId }}</td>
+
+            <td>
+                <button class="btn btn-warning" routerLink="/update-product/{{ product.id }}">
+                    update
+                </button>
+            </td>
+            <td>
+                <button class="btn btn-danger" (click)="onClickDeleteproduct(product)">
+                    Delete
+                </button>
+            </td>
+        </tr>-->
+    </tbody>
+</table>

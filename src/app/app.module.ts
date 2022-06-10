@@ -26,10 +26,7 @@ import { UpdateCountryComponent } from './crud/update/update-country/update-coun
 import { UpdateBrandComponent } from './crud/update/update-brand/update-brand.component';
 import { UpdateCategoryComponent } from './crud/update/update-category/update-category.component';
 import { UpdateProductComponent } from './crud/update/update-product/update-product.component';
-import { DeleteCountryComponent } from './crud/delete/delete-country/delete-country.component';
-import { DeleteBrandComponent } from './crud/delete/delete-brand/delete-brand.component';
-import { DeleteCategoryComponent } from './crud/delete/delete-category/delete-category.component';
-import { DeleteProductComponent } from './crud/delete/delete-product/delete-product.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -54,10 +51,6 @@ import { DeleteProductComponent } from './crud/delete/delete-product/delete-prod
     UpdateBrandComponent,
     UpdateCategoryComponent,
     UpdateProductComponent,
-    DeleteCountryComponent,
-    DeleteBrandComponent,
-    DeleteCategoryComponent,
-    DeleteProductComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,6 +58,7 @@ import { DeleteProductComponent } from './crud/delete/delete-product/delete-prod
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    RouterModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
